@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cargando...</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="loading.css">
+</head>
+<body>
+  <div class="loading-container">
+    <div class="spinner"></div>
+    <p class="loading-text">Cargando, por favor espera...</p>
+  </div>
+
+  <script>
+    // Simula carga y redirige al panel principal
+    setTimeout(() => {
+      window.location.href = "pagina_principal.html";
+    }, 3000); // espera 3 segundos
+  </script>
+</body>
+</html>

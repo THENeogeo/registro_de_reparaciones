@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel de Control</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+  <!-- Logo institucional -->
+  <header class="top-header">
+    <img src="logo.png" alt="Logo STE" class="logo-ste" />
+  </header>
+
+  <!-- 🔵 Botón cerrar sesión → esquina superior derecha -->
+  <div class="logout-wrapper">
+    <button id="logoutBtn" class="btn logout">Cerrar Sesión</button>
+  </div>
+
+  <!-- 🔴 Título centrado -->
+
+  <div class="title-wrapper sticky-title">
+    <h1>Panel de Control</h1>
+  </div>
+
+
+  <!-- 🟢 Tarjetas -->
+  <main class="dashboard">
+    <div class="menu-container">
+      <div class="menu-card" onclick="window.location.href='http://localhost:3000/reparaciones/nueva'">
+        <h2>Registrar Reparación</h2>
+        <p>Agregar un nuevo registro al sistema</p>
+      </div>
+      <div class="menu-card" onclick="window.location.href='#'">
+        <h2>Eliminar</h2>
+        <p>Remover persona del sistema</p>
+      </div>
+      <div class="menu-card" onclick="window.location.href='#'">
+        <h2>Ver Registros</h2>
+        <p>Listado de reparaciones</p>
+      </div>
+      <div class="menu-card" onclick="window.location.href='#'">
+        <h2>Editar Base de Datos</h2>
+        <p>Modificar datos existentes</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="auth.js"></script>
+</body>
+</html>

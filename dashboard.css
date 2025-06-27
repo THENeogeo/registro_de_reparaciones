@@ -1,0 +1,135 @@
+:root {
+  --primary: #4361ee;
+  --primary-dark: #3a0ca3;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray: #6c757d;
+  --light-gray: #e9ecef;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+  min-height: 100vh;
+}
+
+/* Logo superior izquierdo */
+.top-header {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.logo-ste {
+  width: 80px;
+  height: auto;
+}
+
+/* Botón de cerrar sesión */
+.logout-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 1rem auto 0;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Título sticky centrado */
+.title-wrapper {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 50;
+  text-align: center;
+  padding: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+}
+
+.title-wrapper h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Tarjetas */
+.dashboard {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.menu-card {
+  width: 250px;
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--light-gray);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.menu-card h2 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.menu-card p {
+  font-size: 0.875rem;
+  color: var(--gray);
+}
+
+/* Botón global */
+.btn {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--gray);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn:hover {
+  background: var(--light-gray);
+  color: var(--dark);
+}
+
+@media (max-width: 768px) {
+  .menu-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logout-wrapper {
+    justify-content: center;
+  }
+}

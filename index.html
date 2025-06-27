@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SISCRR - Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- Logo institucional -->
+  <header class="top-header">
+    <img src="logo.png" alt="Logo STE" class="logo-ste">
+  </header>
+
+  <div class="login-wrapper">
+    <div class="welcome-panel">
+      <h2>¡Bienvenido!</h2>
+    </div>
+
+    <!-- ⬇️ AGREGADO id="loginForm" -->
+    <div class="login-panel">
+      <h1>Registro de Reparaciones</h1>
+      <form id="loginForm" autocomplete="off">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <!-- ⬇️ AGREGADO id="username" -->
+          <input type="text" id="username" placeholder="Usuario" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <!-- ⬇️ AGREGADO id="password" -->
+          <input type="password" id="password" placeholder="Contraseña" required />
+        </div>
+
+        <button type="submit" class="btn-primary">Entrar</button>
+        <p class="access-text">Copyright© 2025</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ⬇️ AGREGADO defer para asegurar carga correcta -->
+  <script defer src="auth.js"></script>
+</body>
+</html>
