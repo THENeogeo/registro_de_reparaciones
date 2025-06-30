@@ -134,6 +134,6 @@ body {
 
 .btn.logout:hover {
   background: #e9ecef;
-  color: #212529;
+  color: #212529; 
   transform: translateY(-2px);
 }

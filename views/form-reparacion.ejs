@@ -12,10 +12,23 @@
     <img src="/logo.png" alt="Logo STE" class="logo-ste" />
   </header>
 
-  <!-- Botón “Regresar” en la esquina superior derecha -->
+  <!-- Botón “Regresar” en la esquina superior derecha 
   <div class="logout-wrapper">
     <button id="logoutBtn" class="btn logout">Regresar</button>
-  </div>
+  </div> -->
+
+  <!-- Botón Regresar -->
+<div class="logout-wrapper">
+  <button
+    type="button"
+    id="logoutBtn"
+    class="btn logout"
+    onclick="window.history.back()"
+  >
+    Regresar
+  </button>
+</div>
+
   
   <div class="container">
     <h1>Registrar nueva reparación</h1>
@@ -24,7 +37,7 @@
         <!-- Equipo -->
         <div class="input-box">
           <select id="equipo" name="equipo_id" required>
-            <option value="">-- Selecciona un equipo --</option>
+            <option value="">-- Selecciona un equipo -- ⬇️</option>
             <% equipos.forEach(e => { %>
               <option value="<%= e.equipo_id %>"><%= e.nombre %></option>
             <% }) %>
@@ -34,7 +47,7 @@
         <!-- Marca -->
         <div class="input-box">
           <select id="marca" name="marca_id" required>
-            <option value="">-- Selecciona una marca --</option>
+            <option value="">-- Selecciona una marca -- ⬇️</option>
             <% marcas.forEach(m => { %>
               <option value="<%= m.marca_id %>"><%= m.nombre %></option>
             <% }) %>
@@ -44,7 +57,7 @@
         <!-- Modelo -->
         <div class="input-box">
           <select id="modelo" name="modelo_id" required>
-            <option value="">-- Selecciona un modelo --</option>
+            <option value="">-- Selecciona un modelo -- ⬇️</option>
             <% modelos.forEach(mo => { %>
               <option value="<%= mo.modelo_id %>"><%= mo.nombre %></option>
             <% }) %>
@@ -65,7 +78,7 @@
         <!-- Refacción -->
         <div class="input-box">
           <select id="refaccion" name="refaccion_id" required>
-            <option value="">-- Selecciona una refacción --</option>
+            <option value="">-- Selecciona una refacción -- ⬇️</option>
             <% refacciones.forEach(r => { %>
               <option value="<%= r.refaccion_id %>"><%= r.nombre %></option>
             <% }) %>
@@ -139,7 +152,7 @@
         <!-- Área -->
         <div class="input-box">
           <select id="area" name="area_id" required>
-            <option value="">-- Selecciona un área --</option>
+            <option value="">-- Selecciona un área -- ⬇️</option>
             <% areas.forEach(a => { %>
               <option value="<%= a.area_id %>"><%= a.nombre %></option>
             <% }) %>
