@@ -7,13 +7,11 @@
   font-family: "Poppins", sans-serif;
 }
 
-
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /* background: linear-gradient(90deg, #e2e2e2, #c9d6ff); */
   background: #ffffff;
   padding: 2rem;
 }
@@ -34,7 +32,6 @@ body {
 .container {
   width: 800px;
   max-width: 95%;
-  /* background: #fff; */
   background: #4361ee;
   border-radius: 30px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
@@ -45,7 +42,6 @@ body {
   text-align: center;
   font-size: 32px;
   padding: 30px 0 10px;
-  /* color: #333; */
   color: #ffffff;
 }
 
@@ -84,14 +80,12 @@ body {
 }
 
 .input-box:has(select:hover) select {
-  /* color: #4361ee; */
   color: #3f01eb;
 }
 
 .btn {
   width: 100%;
   height: 50px;
-  /* background: #7494ec; */
   background: #27f50b;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
@@ -109,8 +103,7 @@ body {
   transform: translateY(-2px);
 }
 
-
-/* ——— Estilos para el botón “Salir” ——— */
+/* Botón Regresar / Salir */
 .logout-wrapper {
   position: absolute;
   top: 1rem;
@@ -134,11 +127,11 @@ body {
 
 .btn.logout:hover {
   background: #e9ecef;
-  color: #212529; 
+  color: #212529;
   transform: translateY(-2px);
 }
 
-
+/* Alerta de éxito */
 .alert.success {
   background: #d4edda;
   color: #155724;

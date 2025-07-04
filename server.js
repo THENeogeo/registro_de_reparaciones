@@ -1,3 +1,4 @@
+// server.js
 const express    = require('express');
 const mysql      = require('mysql2/promise');
 const bodyParser = require('body-parser');
@@ -5,15 +6,15 @@ const path       = require('path');
 
 const app = express();
 
-// Configuración de vistas
+// Motor de vistas
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware
+// Servir estáticos de /public
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Pool MySQL
+// Pool de conexión MySQL
 const pool = mysql.createPool({
   host:     'localhost',
   user:     'root',
@@ -23,7 +24,12 @@ const pool = mysql.createPool({
   connectionLimit: 10,
 });
 
-// --- GET: mostrar formulario con todas las listas ---
+// ——— Opción B: servir dashboard.html desde la ruta /dashboard.html ———
+app.get('/dashboard.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dashboard.html'));
+});
+
+// ——— GET: mostrar formulario con listas y posible mensaje de éxito ———
 app.get('/reparaciones/nueva', async (req, res, next) => {
   try {
     const [equipos]     = await pool.query('SELECT equipo_id, nombre FROM equipos');
@@ -32,20 +38,23 @@ app.get('/reparaciones/nueva', async (req, res, next) => {
     const [refacciones] = await pool.query('SELECT refaccion_id, nombre FROM refacciones');
     const [areas]       = await pool.query('SELECT area_id, nombre FROM areas');
 
+    // Detectar si viene ?success=1
+    const success = req.query.success === '1';
+
     res.render('form-reparacion', {
       equipos,
       marcas,
       modelos,
       refacciones,
-      areas
+      areas,
+      success
     });
   } catch (err) {
     next(err);
   }
 });
 
-
-// --- POST: procesar envío del formulario ---
+// ——— POST: procesar el formulario ———
 app.post('/reparaciones', async (req, res, next) => {
   const {
     equipo_id,
@@ -63,7 +72,7 @@ app.post('/reparaciones', async (req, res, next) => {
   } = req.body;
 
   try {
-    // 1) (Opcional) Si quieres guardar el inventario de refacción en la tabla refacciones:
+    // 1) (Opcional) actualizar inventario de refacción
     await pool.query(
       `UPDATE refacciones
          SET refaccion_inventario = ?
@@ -71,7 +80,7 @@ app.post('/reparaciones', async (req, res, next) => {
       [inventario_refaccion, refaccion_id]
     );
 
-    // 2) Insertar usuario con expediente y área
+    // 2) insertar usuario
     const [userResult] = await pool.query(
       `INSERT INTO usuarios
          (expediente, nombre, apellido_p, apellido_m, area_id)
@@ -80,7 +89,7 @@ app.post('/reparaciones', async (req, res, next) => {
     );
     const usuario_id = userResult.insertId;
 
-    // 3) Insertar reparación
+    // 3) insertar reparación
     await pool.query(
       `INSERT INTO reparacion
          (equipo_id, inventario, refaccion_id, descripcion, fecha, usuario_id)
@@ -88,13 +97,14 @@ app.post('/reparaciones', async (req, res, next) => {
       [equipo_id, inventario_equipo, refaccion_id, descripcion, usuario_id]
     );
 
-    res.send('¡Reparación registrada con éxito!');
+    // en lugar de res.send, redirigimos con flag de éxito
+    res.redirect('/reparaciones/nueva?success=1');
   } catch (err) {
     next(err);
   }
 });
 
-// Error handler
+// manejador de errores
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).send('Error interno: ' + err.message);
@@ -102,5 +112,5 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`✅✅Servidor corriendo en http://localhost:${PORT}✅✅`);
+  console.log(`✅✅ Servidor corriendo en http://localhost:${PORT}✅✅`);
 });
